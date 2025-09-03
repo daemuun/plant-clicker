@@ -20,4 +20,20 @@ class ClickerViewModelTest {
 
         assertEquals(expectedCountClicks, actualCountClicks)
     }
+
+    @Test
+    fun `test for changing the plant when the required number of clicks is reached`() {
+        var currentUiState = viewModel.uiState.value
+        val expectesPlant = viewModel.plants[viewModel.plants.indexOf(currentUiState.currentPlant) + 1]
+
+        repeat(currentUiState.currentPlant.countThisPlant) {
+            viewModel.onPlantClick()
+            viewModel.checkUpdateThePlant()
+        }
+
+        currentUiState = viewModel.uiState.value
+        val actualPlant = currentUiState.currentPlant
+
+        assertEquals(expectesPlant, actualPlant)
+    }
 }
