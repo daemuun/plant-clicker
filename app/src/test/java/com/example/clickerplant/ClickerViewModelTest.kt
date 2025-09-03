@@ -36,4 +36,22 @@ class ClickerViewModelTest {
 
         assertEquals(expectesPlant, actualPlant)
     }
+
+    @Test
+    fun `test update the last plant`() {
+        repeat(viewModel.plants.last().countThisPlantTaps) {
+            viewModel.onPlantClick()
+            viewModel.checkUpdateThePlant()
+        }
+        var currentUiState = viewModel.uiState.value
+        val expectedPlant = currentUiState.currentPlant
+
+        viewModel.onPlantClick()
+        viewModel.checkUpdateThePlant()
+
+        currentUiState = viewModel.uiState.value
+        val actualPlant = currentUiState.currentPlant
+
+        assertEquals(expectedPlant, actualPlant)
+    }
 }
