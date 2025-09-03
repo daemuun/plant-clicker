@@ -8,6 +8,6 @@ class PlantsRepositoryImpl : PlantsRepository {
         return listOf(
             Plant(R.drawable.cucumber, R.string.cucumber, 20, 20),
             Plant(R.drawable.tomato, R.string.tomato, 40, 40)
-        ).sortedBy { it.countThisPlant }
+        ).sortedBy { it.countThisPlantTaps }
     }
 }

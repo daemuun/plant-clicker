@@ -7,5 +7,5 @@ data class Plant(
     @DrawableRes val plantImageId: Int,
     @StringRes val plantNameId: Int,
     val plantCost: Int,
-    val thisPlantNeedsCount: Int,
+    val countThisPlantTaps: Int,
 )

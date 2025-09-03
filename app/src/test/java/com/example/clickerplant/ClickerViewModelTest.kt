@@ -26,7 +26,7 @@ class ClickerViewModelTest {
         var currentUiState = viewModel.uiState.value
         val expectesPlant = viewModel.plants[viewModel.plants.indexOf(currentUiState.currentPlant) + 1]
 
-        repeat(currentUiState.currentPlant.countThisPlant) {
+        repeat(currentUiState.currentPlant.countThisPlantTaps) {
             viewModel.onPlantClick()
             viewModel.checkUpdateThePlant()
         }
