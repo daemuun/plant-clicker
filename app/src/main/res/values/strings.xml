@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ClickerPlant</string>
+    <string name="cucumber">Огурец</string>
+    <string name="tomato">Помидор</string>
+</resources>
