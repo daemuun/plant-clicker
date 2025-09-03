@@ -6,8 +6,8 @@ import com.example.clickerplant.model.Plant
 class PlantsRepositoryImpl : PlantsRepository {
     override fun getPlants(): List<Plant> {
         return listOf(
-            Plant(R.drawable.cucumber, R.string.cucumber, 20, 0),
-            Plant(R.drawable.tomato, R.string.tomato, 40, 20)
-        ).sortedBy { it.thisPlantNeedsCount }
+            Plant(R.drawable.cucumber, R.string.cucumber, 20, 20),
+            Plant(R.drawable.tomato, R.string.tomato, 40, 40)
+        ).sortedBy { it.countThisPlant }
     }
 }
