@@ -25,7 +25,11 @@ class ClickerViewModel(plantsRepository: PlantsRepository = PlantsRepositoryImpl
         if (!checkPlantFinished()) {
             return
         }
-        //TODO(обновить состояние (текущее растение))
+        _uiState.update { currentState ->
+            currentState.copy(
+                currentPlant = plants[plants.indexOf(currentState.currentPlant) + 1]
+            )
+        }
     }
 
     private fun checkPlantFinished(): Boolean {
