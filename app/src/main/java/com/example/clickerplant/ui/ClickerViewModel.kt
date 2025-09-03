@@ -33,7 +33,7 @@ class ClickerViewModel(plantsRepository: PlantsRepository = PlantsRepositoryImpl
     }
 
     private fun checkPlantFinished(): Boolean {
-        return uiState.value.countClicks >= uiState.value.currentPlant.thisPlantNeedsCount
-                && plants.indexOf(uiState.value.currentPlant) < plants.size
+        return uiState.value.countClicks >= uiState.value.currentPlant.countThisPlantTaps
+                && plants.indexOf(uiState.value.currentPlant) < plants.lastIndex
     }
 }
