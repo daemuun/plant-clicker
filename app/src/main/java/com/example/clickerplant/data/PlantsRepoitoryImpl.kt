@@ -11,7 +11,3 @@ class PlantsRepositoryImpl() : PlantsRepository {
         ).sortedBy { it.thisPlantNeedsCount }
     }
 }
-
-interface PlantsRepository {
-    fun getPlants(): List<Plant>
-}
