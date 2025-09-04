@@ -2,4 +2,6 @@
     <string name="app_name">ClickerPlant</string>
     <string name="cucumber">Огурец</string>
     <string name="tomato">Помидор</string>
+    <string name="count_clicks">Количество кликов: %d</string>
+    <string name="current_revenue">Общие продажи: %s</string>
 </resources>
