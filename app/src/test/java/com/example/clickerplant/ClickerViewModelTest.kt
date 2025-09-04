@@ -2,14 +2,14 @@ package com.example.clickerplant
 
 import com.example.clickerplant.data.MockPlantsRepository
 import com.example.clickerplant.ui.ClickerViewModel
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.Assert.*
 
 class ClickerViewModelTest {
     val viewModel = ClickerViewModel(MockPlantsRepository())
 
     @Test
-    fun `on user click count clicks has been added`() {
+    fun onUserClickCountClicksHasBeenAdded() {
         var currentUiState = viewModel.uiState.value
         val expectedCountClicks = currentUiState.countClicks + 1
 
@@ -22,9 +22,10 @@ class ClickerViewModelTest {
     }
 
     @Test
-    fun `test for changing the plant when the required number of clicks is reached`() {
+    fun testForChangingThePlantWhenRequiredNumberOfClicksIsReached() {
         var currentUiState = viewModel.uiState.value
-        val expectesPlant = viewModel.plants[viewModel.plants.indexOf(currentUiState.currentPlant) + 1]
+        val expectesPlant =
+            viewModel.plants[viewModel.plants.indexOf(currentUiState.currentPlant) + 1]
 
         repeat(currentUiState.currentPlant.countThisPlantTaps) {
             viewModel.onPlantClick()
@@ -38,7 +39,7 @@ class ClickerViewModelTest {
     }
 
     @Test
-    fun `test update the last plant`() {
+    fun testUpdateTheLastPlant() {
         repeat(viewModel.plants.last().countThisPlantTaps) {
             viewModel.onPlantClick()
             viewModel.checkUpdateThePlant()
@@ -56,7 +57,7 @@ class ClickerViewModelTest {
     }
 
     @Test
-    fun `update current revenue on click`() {
+    fun updateCurrentRevenueOnClick() {
         var currentUiState = viewModel.uiState.value
         val expectedRevenue = currentUiState.currentRevenue + currentUiState.currentPlant.plantCost
 
