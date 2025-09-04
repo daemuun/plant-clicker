@@ -54,4 +54,17 @@ class ClickerViewModelTest {
 
         assertEquals(expectedPlant, actualPlant)
     }
+
+    @Test
+    fun `update current revenue on click`() {
+        var currentUiState = viewModel.uiState.value
+        val expectedRevenue = currentUiState.currentRevenue + currentUiState.currentPlant.plantCost
+
+        viewModel.onPlantClick()
+
+        currentUiState = viewModel.uiState.value
+        val actualRevenue = currentUiState.currentRevenue
+
+        assertEquals(expectedRevenue, actualRevenue)
+    }
 }
