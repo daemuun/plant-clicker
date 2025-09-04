@@ -44,8 +44,8 @@ fun ClickerScreen(viewModel: ClickerViewModel = viewModel()) {
         Surface(modifier = Modifier.padding(innerPadding)) {
             Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
                 PlantImage(
-                    clickerUiState.currentPlant.plantImageId,
-                    clickerUiState.currentPlant.plantNameId,
+                    viewModel.plants[ clickerUiState.currentPlantIndex].plantImageId,
+                    viewModel.plants[ clickerUiState.currentPlantIndex].plantNameId,
                     onPlantImageClick = {
                         viewModel.onPlantClick()
                         viewModel.checkUpdateThePlant()

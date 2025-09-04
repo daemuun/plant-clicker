@@ -25,15 +25,15 @@ class ClickerViewModelTest {
     fun testForChangingThePlantWhenRequiredNumberOfClicksIsReached() {
         var currentUiState = viewModel.uiState.value
         val expectesPlant =
-            viewModel.plants[viewModel.plants.indexOf(currentUiState.currentPlant) + 1]
+            viewModel.plants[currentUiState.currentPlantIndex + 1]
 
-        repeat(currentUiState.currentPlant.countThisPlantTaps) {
+        repeat(viewModel.plants[currentUiState.currentPlantIndex].countThisPlantTaps) {
             viewModel.onPlantClick()
             viewModel.checkUpdateThePlant()
         }
 
         currentUiState = viewModel.uiState.value
-        val actualPlant = currentUiState.currentPlant
+        val actualPlant = viewModel.plants[currentUiState.currentPlantIndex]
 
         assertEquals(expectesPlant, actualPlant)
     }
@@ -45,13 +45,13 @@ class ClickerViewModelTest {
             viewModel.checkUpdateThePlant()
         }
         var currentUiState = viewModel.uiState.value
-        val expectedPlant = currentUiState.currentPlant
+        val expectedPlant = viewModel.plants[currentUiState.currentPlantIndex]
 
         viewModel.onPlantClick()
         viewModel.checkUpdateThePlant()
 
         currentUiState = viewModel.uiState.value
-        val actualPlant = currentUiState.currentPlant
+        val actualPlant = viewModel.plants[currentUiState.currentPlantIndex]
 
         assertEquals(expectedPlant, actualPlant)
     }
@@ -59,7 +59,7 @@ class ClickerViewModelTest {
     @Test
     fun updateCurrentRevenueOnClick() {
         var currentUiState = viewModel.uiState.value
-        val expectedRevenue = currentUiState.currentRevenue + currentUiState.currentPlant.plantCost
+        val expectedRevenue = currentUiState.currentRevenue + viewModel.plants[currentUiState.currentPlantIndex].plantCost
 
         viewModel.onPlantClick()
 

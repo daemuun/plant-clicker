@@ -9,14 +9,14 @@ import kotlinx.coroutines.flow.update
 
 class ClickerViewModel(plantsRepository: PlantsRepository = PlantsRepositoryImpl()) : ViewModel() {
     val plants = plantsRepository.getPlants()
-    private val _uiState = MutableStateFlow(ClickerUiState(currentPlant = plants[0]))
+    private val _uiState = MutableStateFlow(ClickerUiState(currentPlantIndex = 0))
     val uiState = _uiState.asStateFlow()
 
     fun onPlantClick() {
         _uiState.update { currentState ->
             currentState.copy(
-                countClicks = currentState.countClicks + 1,
-                currentRevenue = currentState.currentRevenue + currentState.currentPlant.plantCost
+                countClicks = currentState.countClicks.inc(),
+                currentRevenue = currentState.currentRevenue + plants[currentState.currentPlantIndex].plantCost
             )
         }
     }
@@ -27,13 +27,13 @@ class ClickerViewModel(plantsRepository: PlantsRepository = PlantsRepositoryImpl
         }
         _uiState.update { currentState ->
             currentState.copy(
-                currentPlant = plants[plants.indexOf(currentState.currentPlant) + 1]
+                currentPlantIndex = currentState.currentPlantIndex.inc()
             )
         }
     }
 
     private fun checkPlantFinished(): Boolean {
-        return uiState.value.countClicks >= uiState.value.currentPlant.countThisPlantTaps
-                && plants.indexOf(uiState.value.currentPlant) < plants.lastIndex
+        return uiState.value.countClicks >= plants[uiState.value.currentPlantIndex].countThisPlantTaps
+                && uiState.value.currentPlantIndex < plants.lastIndex
     }
 }
