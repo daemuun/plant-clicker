@@ -44,8 +44,8 @@ fun ClickerScreen(viewModel: ClickerViewModel = viewModel()) {
         Surface(modifier = Modifier.padding(innerPadding)) {
             Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
                 PlantImage(
-                    viewModel.plants[ clickerUiState.currentPlantIndex].plantImageId,
-                    viewModel.plants[ clickerUiState.currentPlantIndex].plantNameId,
+                    viewModel.plants[clickerUiState.currentPlantIndex].plantImageId,
+                    viewModel.plants[clickerUiState.currentPlantIndex].plantNameId,
                     onPlantImageClick = {
                         viewModel.onUserClick()
                     },
@@ -106,7 +106,7 @@ fun ClickerInfo(
         Text(
             text = stringResource(
                 R.string.current_revenue,
-                NumberFormat.getNumberInstance().format(currentRevenue)
+                NumberFormat.getCurrencyInstance().format(currentRevenue)
             ),
             style = MaterialTheme.typography.displaySmall,
             modifier = Modifier
