@@ -4,4 +4,8 @@
     <string name="tomato">Помидор</string>
     <string name="count_clicks">Количество кликов: %d</string>
     <string name="current_revenue">Общие продажи: %s</string>
+    <string name="potato">Картошка</string>
+    <string name="garlic">Чеснок</string>
+    <string name="onion">Лук</string>
+    <string name="chili">Перец чили</string>
 </resources>
