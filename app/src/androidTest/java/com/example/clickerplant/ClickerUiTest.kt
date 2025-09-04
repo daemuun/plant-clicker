@@ -57,6 +57,6 @@ class ClickerUiTest {
             composeTestRule.waitForIdle()
         }
 
-        composeTestRule.onNodeWithText("Помидор").assertExists()
+        composeTestRule.onNodeWithContentDescription("Помидор").assertExists()
     }
 }
