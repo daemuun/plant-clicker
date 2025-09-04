@@ -32,6 +32,11 @@ class ClickerViewModel(plantsRepository: PlantsRepository = PlantsRepositoryImpl
         }
     }
 
+    fun onUserClick() {
+        onPlantClick()
+        checkUpdateThePlant()
+    }
+
     private fun checkPlantFinished(): Boolean {
         return uiState.value.countClicks >= plants[uiState.value.currentPlantIndex].countThisPlantTaps
                 && uiState.value.currentPlantIndex < plants.lastIndex

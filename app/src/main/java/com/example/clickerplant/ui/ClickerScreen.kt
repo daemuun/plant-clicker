@@ -47,8 +47,7 @@ fun ClickerScreen(viewModel: ClickerViewModel = viewModel()) {
                     viewModel.plants[ clickerUiState.currentPlantIndex].plantImageId,
                     viewModel.plants[ clickerUiState.currentPlantIndex].plantNameId,
                     onPlantImageClick = {
-                        viewModel.onPlantClick()
-                        viewModel.checkUpdateThePlant()
+                        viewModel.onUserClick()
                     },
                     modifier = Modifier
                         .weight(1f)
